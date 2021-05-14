@@ -5,7 +5,7 @@ import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
 
-public interface PurchaseBinder {
+public interface OrderBinder {
 
     //spring.cloud.stream.bindings.inventoryChecking-in
     String INVENTORY_CHECKING_IN = "inventoryChecking-in";

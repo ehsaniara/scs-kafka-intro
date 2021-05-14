@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 
 //EnableBinding will be Deprecated as of 3.1 in favor of functional programming model, stay tuned for the next tutorials
-@EnableBinding(value = {PurchaseBinder.class})
+@EnableBinding(value = {OrderBinder.class})
 @SpringBootApplication
 public class Application {
 

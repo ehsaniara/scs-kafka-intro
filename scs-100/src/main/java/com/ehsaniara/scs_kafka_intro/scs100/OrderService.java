@@ -18,18 +18,20 @@ import java.util.UUID;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class PurchaseService {
+public class OrderService {
 
-    private final PurchaseBinder purchaseBinder;
+    private final OrderBinder orderBinder;
 
     /**
-     * this is a simulating your order dataBase (Single App Instance), We can replaced it with KStream in feature tutorials.
+     * this is a simulating your order dataBase (Works only Single App Instance, and does not survive in app restart), We can replaced it with KStream in feature tutorials.
      */
     Map<UUID, Order> orderDataBase = new HashMap<>();
 
+    /**
+     * Status check for the given Order Id (orderUuid)
+     */
     public OrderStatus statusCheck(UUID orderUuid) {
-        return Optional.ofNullable(orderDataBase)
-                .map(c -> c.get(orderUuid))
+        return Optional.ofNullable(orderDataBase.get(orderUuid))
                 .orElseThrow(() -> new OrderNotFoundException("Order not found")).getOrderStatus();
     }
 
@@ -49,7 +51,7 @@ public class PurchaseService {
         orderDataBase.put(order.getOrderUuid(), order);
 
         //send it for inventory check
-        purchaseBinder.inventoryCheckingOut()//
+        orderBinder.inventoryCheckingOut()//
                 .send(MessageBuilder.withPayload(order)//
                         .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)//
                         .build());
@@ -61,7 +63,7 @@ public class PurchaseService {
      * this is a third party service simulation and
      * let say it tacks around 5 seconds to check your inventory
      */
-    @StreamListener(PurchaseBinder.INVENTORY_CHECKING_IN)
+    @StreamListener(OrderBinder.INVENTORY_CHECKING_IN)
     @SneakyThrows
     public void checkInventory(@Payload Order orderIn) {
         log.debug("checkInventory orderIn: {}", orderIn);
@@ -78,7 +80,7 @@ public class PurchaseService {
         }
 
         //Order is good to go for shipping
-        purchaseBinder.shippingOut()//
+        orderBinder.shippingOut()//
                 .send(MessageBuilder.withPayload(orderIn)//
                         .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)//
                         .build());
@@ -87,7 +89,7 @@ public class PurchaseService {
     /**
      * Order is shipped
      */
-    @StreamListener(PurchaseBinder.SHIPPING_IN)
+    @StreamListener(OrderBinder.SHIPPING_IN)
     public void shipIt(@Payload Order orderIn) {
         log.debug("shipIt orderIn: {}", orderIn);
         orderIn.setOrderStatus(OrderStatus.SHIPPED);
@@ -100,7 +102,7 @@ public class PurchaseService {
      * this is eventually a DLQ,
      * for a general purpose
      */
-    @StreamListener(PurchaseBinder.ORDER_DLQ)
+    @StreamListener(OrderBinder.ORDER_DLQ)
     public void cancelOrder(@Payload Order orderIn) {
         log.warn("cancelOrder orderIn: {}", orderIn);
         orderIn.setOrderStatus(OrderStatus.CANCELED);

@@ -15,20 +15,20 @@ import java.util.UUID;
 @Slf4j
 @RestController
 @AllArgsConstructor
-public class ProducerController {
+public class OrderController {
 
-    private final PurchaseService purchaseService;
+    private final OrderService orderService;
 
     @PostMapping("order")
     public Order placeOrder(@RequestBody @NotNull(message = "Invalid Order") Order order) {
 
-        return purchaseService.placeOrder(order);
+        return orderService.placeOrder(order);
     }
 
     @GetMapping("order/status/{orderUuid}")
     public OrderStatus statusCheck(@PathVariable("orderUuid") UUID orderUuid) {
 
-        return purchaseService.statusCheck(orderUuid);
+        return orderService.statusCheck(orderUuid);
     }
 
     @ControllerAdvice
