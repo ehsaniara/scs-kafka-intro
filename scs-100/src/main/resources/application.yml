@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: scs-100
+
+  cloud.stream:
+    bindings:
+      ##
+      inventoryChecking-out:
+        destination: scs-100.inventoryChecking
+      inventoryChecking-in:
+        destination: scs-100.inventoryChecking
+        group: ${spring.application.name}-inventoryChecking-group
+        consumer:
+          maxAttempts: 1
+
+      order-dlq:
+        destination: scs-100.ordering_dlq
+
+      shipping-out:
+        destination: scs-100.shipping
+      shipping-in:
+        destination: scs-100.shipping
+        group: ${spring.application.name}-shipping-group
+
+    kafka:
+      bindings:
+        # If Inventory Checking fails
+        inventoryChecking-in.consumer:
+          enableDlq: true
+          dlqName: scs-100.ordering_dlq
+          autoCommitOnError: true
+          AutoCommitOffset: true
+
+        # If shipping fails
+        shipping-in.consumer:
+          enableDlq: true
+          dlqName: scs-100.ordering_dlq
+          autoCommitOnError: true
+          AutoCommitOffset: true
+
+logging:
+  level:
+    com.ehsaniara.scs_kafka_intro: debug
