@@ -59,7 +59,7 @@ public class OrderService {
     }
 
     /**
-     * check inventory System for Item availability.
+     * checking inventory System for Item availability.
      * this is a third party service simulation and
      * let say it tacks around 5 seconds to check your inventory
      */
@@ -76,6 +76,7 @@ public class OrderService {
         if (System.currentTimeMillis() % 2 == 0) {
             orderIn.setOrderStatus(OrderStatus.INSUFFICIENT_INVENTORY);
             orderDataBase.put(orderIn.getOrderUuid(), orderIn);
+            log.warn("Let's assume we ran out of stock for item: {}", orderIn.getItemName());
             throw new OrderFailedException(String.format("insufficient inventory for order: %s", orderIn.getOrderUuid()));
         }
 

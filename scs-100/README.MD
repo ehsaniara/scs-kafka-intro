@@ -1,6 +1,8 @@
 # SCS-100
 
-A basic Example of an Event Driven Flow by the help of **SPRING CLOUD STREAM KAFKA**
+## PubSub Mechanism
+
+A simple Example of an Event Driven Flow by the help of **SPRING CLOUD STREAM KAFKA**
 
 ##### properties
 

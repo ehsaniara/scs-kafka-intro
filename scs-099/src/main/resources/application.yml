@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: scs-099
+
+  cloud.stream.bindings:
+    order-out.destination: scs-099.order # Topic Name
+    order-in.destination: scs-099.order # Topic Name
+
+# To see the DEBUG level logs in console
+logging.level.com.ehsaniara.scs_kafka_intro: debug
+---
+spring:
+  config:
+    activate:
+      on-profile: "test2"
+
+  cloud.stream.bindings:
+    order-out.producer.partition-count: 10
+    order-in:
+      group: ${spring.application.name}-shipping-group
+      consumer.concurrency: 1
+
+  cloud.stream.kafka.binder:
+    autoAddPartitions: true
+---
+spring:
+  config:
+    activate:
+      on-profile: "test3"
+
+  cloud.stream.bindings:
+    order-out.producer.partition-count: 10
+    order-in:
+      group: ${spring.application.name}-shipping-group
+      consumer.concurrency: 3
+
+  cloud.stream.kafka.binder:
+    autoAddPartitions: true
+
+
