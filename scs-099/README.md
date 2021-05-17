@@ -12,6 +12,7 @@ A simple Example of an Event Driven Flow by the help of **SPRING CLOUD STREAM KA
 
 The Docker-compose file contains: single kafka and zookeeper. just simply run the following command
 
+![General Flow Diagram](material/kafka-events-intro-099-1.svg)
 ```shell
 docker-compose up -d
 ```
