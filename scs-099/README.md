@@ -40,8 +40,9 @@ java -jar scs-099-0.0.1-SNAPSHOT.jar
 _the application starts to listen on port 8080. make sure that port is not occupied by any other app already, if is try
 to pass the following parameter before `-jar` by adding `-Dserver.port=8081`_
 
+Basically in this test, Producer adding 10 messages into kafka topic every 5 sec.
 
-## Run the Test2
+## Single Producer and Single Consumer
 
 ```shell
 java -Dspring.profiles.active=test2 -jar scs-099-0.0.1-SNAPSHOT.jar
@@ -49,7 +50,7 @@ java -Dspring.profiles.active=test2 -jar scs-099-0.0.1-SNAPSHOT.jar
 
 ![General Flow Diagram](material/kafka-events-intro-099-2.svg)
 
-## Run the Test3
+## Single Producer and Single Consumer with 3 Thread
 
 ```shell
 java -Dspring.profiles.active=test3 -jar scs-099-0.0.1-SNAPSHOT.jar
@@ -57,7 +58,7 @@ java -Dspring.profiles.active=test3 -jar scs-099-0.0.1-SNAPSHOT.jar
 
 ![General Flow Diagram](material/kafka-events-intro-099-4.svg)
 
-## Run the Test4
+## Single Producer and 3 Consumer App (3 separate JVM process)
 
 Run the following codes in 3 different terminal
 
