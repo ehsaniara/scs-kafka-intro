@@ -13,6 +13,7 @@ A simple Example of an Event Driven Flow by the help of **SPRING CLOUD STREAM KA
 The Docker-compose file contains: single kafka and zookeeper. just simply run the following command
 
 ![General Flow Diagram](material/kafka-events-intro-099-1.svg)
+
 ```shell
 docker-compose up -d
 ```
@@ -39,17 +40,22 @@ java -jar scs-099-0.0.1-SNAPSHOT.jar
 _the application starts to listen on port 8080. make sure that port is not occupied by any other app already, if is try
 to pass the following parameter before `-jar` by adding `-Dserver.port=8081`_
 
+
 ## Run the Test2
 
 ```shell
 java -Dspring.profiles.active=test2 -jar scs-099-0.0.1-SNAPSHOT.jar
 ```
 
+![General Flow Diagram](material/kafka-events-intro-099-2.svg)
+
 ## Run the Test3
 
 ```shell
 java -Dspring.profiles.active=test3 -jar scs-099-0.0.1-SNAPSHOT.jar
 ```
+
+![General Flow Diagram](material/kafka-events-intro-099-4.svg)
 
 ## Run the Test4
 
@@ -72,3 +78,5 @@ on Terminal-3: (this app has only one consumer)
 ```shell
 java -Dspring.profiles.active=test2 -Dserver.port=8082 -jar scs-099-0.0.1-SNAPSHOT.jar
 ```
+
+![General Flow Diagram](material/kafka-events-intro-099-3.svg)
