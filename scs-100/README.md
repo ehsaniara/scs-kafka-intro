@@ -28,7 +28,7 @@ run the following command line to create you jar file in `target` directory
 mvn clean package
 ```
 
-Then run the generated jar file in target folder, (so make sure you are in the same directory when you run the jar file
+Then run the generated jar file in `target` folder, (so make sure you are in the same directory when you run the jar file
 or give the full path)
 
 ```shell
