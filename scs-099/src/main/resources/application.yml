@@ -17,7 +17,7 @@ spring:
   cloud.stream.bindings:
     order-out.producer.partition-count: 10
     order-in:
-      group: ${spring.application.name}-shipping-group
+      group: ${spring.application.name}-group
       consumer.concurrency: 1
 
   cloud.stream.kafka.binder:
@@ -31,7 +31,7 @@ spring:
   cloud.stream.bindings:
     order-out.producer.partition-count: 10
     order-in:
-      group: ${spring.application.name}-shipping-group
+      group: ${spring.application.name}-group
       consumer.concurrency: 3
 
   cloud.stream.kafka.binder:

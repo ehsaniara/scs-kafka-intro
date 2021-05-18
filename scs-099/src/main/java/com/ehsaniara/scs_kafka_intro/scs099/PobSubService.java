@@ -41,10 +41,7 @@ public class PobSubService {
                         String message = String.format("TestString of %s - %s", counter, value);
 
                         //here is out message publisher in the given channel into topic "scs-099.order"
-                        myBinder.orderOut()
-                                .send(MessageBuilder.withPayload(message)
-                                        .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
-                                        .build());
+                        myBinder.orderOut().send(MessageBuilder.withPayload(message).build());
 
                         //to show what we have produced in kafka ("WARN" to show in different color on the console)
                         log.warn("message produced: {}", message);

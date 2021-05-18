@@ -2,7 +2,9 @@
 
 ## Producer Consumer
 
-A simple Example of an Event Driven Flow by the help of **SPRING CLOUD STREAM KAFKA**
+A simple example for an Event Driven Flow by the help of **SPRING CLOUD STREAM KAFKA**
+
+![General Flow Diagram](material/kafka-events-intro-099-1.svg)
 
 ##### properties
 
@@ -11,8 +13,6 @@ A simple Example of an Event Driven Flow by the help of **SPRING CLOUD STREAM KA
 * spring-boot.version: `2.4.5`
 
 The Docker-compose file contains: single kafka and zookeeper. just simply run the following command
-
-![General Flow Diagram](material/kafka-events-intro-099-1.svg)
 
 ```shell
 docker-compose up -d
