@@ -38,7 +38,7 @@ public class PobSubService {
             IntStream.range(0, 10)
                     .forEach(value -> {
                         //this is our Message payload
-                        String message = String.format("TestString of %s - %s", counter, value);
+                        var message = String.format("TestString of %s - %s", counter, value);
 
                         //here is out message publisher in the given channel into topic "scs-099.order"
                         myBinder.orderOut().send(MessageBuilder.withPayload(message).build());
