@@ -11,7 +11,7 @@ spring:
         destination: scs-100.inventoryChecking
         group: ${spring.application.name}-inventoryChecking-group
         consumer:
-          maxAttempts: 1 # this example for simulating out of stock so there is no point of retrying after it failed in the first attempt
+          maxAttempts: 1 # on example we are simulating "out of stock" scenario, so there is no point for retrying after it failed in the first attempt
 
       order-dlq:
         destination: scs-100.ordering_dlq

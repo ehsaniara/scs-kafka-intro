@@ -74,9 +74,10 @@ public class OrderService {
 
         // just a simulation of create exception for random orders (1 in 2) in case of inventory insufficiency
         if (System.currentTimeMillis() % 2 == 0) {
-            orderIn.setOrderStatus(OrderStatus.INSUFFICIENT_INVENTORY);
+            orderIn.setOrderStatus(OrderStatus.OUT_OF_STOCK);
             orderDataBase.put(orderIn.getOrderUuid(), orderIn);
             log.warn("Let's assume we ran out of stock for item: {}", orderIn.getItemName());
+            Thread.sleep(5_000);//5 sec delay
             throw new OrderFailedException(String.format("insufficient inventory for order: %s", orderIn.getOrderUuid()));
         }
 

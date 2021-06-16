@@ -35,7 +35,7 @@ or give the full path)
 java -jar scs-100-0.0.1-SNAPSHOT.jar
 ```
 
-the application starts to listen on port 8080. make sure that port is not occupied by any other app already, if is try
+the application starts to listen on port 8080. make sure that port not being occupied by any other app already, if is try
 to pass the following parameter before `-jar` by adding `-Dserver.port=8081` as:
 
 ```shell
