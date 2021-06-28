@@ -42,9 +42,6 @@ the application starts to listen on port 8080.
 ```shell
 java -Dserver.port=8081 -jar scs-100-0.0.1-SNAPSHOT.jar
 ```
-
-_Note: you can also modify the application.yml and set the same properties based on your app profile_
-
 _Note: "When running multiple instances of the same application on a single machine, this path must be unique for each such instance._
 At this point you should have already seen the information about your topics", [to read more](https://kafka.apache.org/28/documentation/streams/developer-guide/config-streams.html#state-dir)
 
