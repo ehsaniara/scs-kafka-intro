@@ -82,6 +82,7 @@ public class OrderService implements OrderTopology {
     public Function<KStream<UUID, Order>, KStream<UUID, Order>[]> orderProcess() {
 
         return input -> input
+                .peek((uuid, order) -> log.debug("Routing Order: {} [status: {}]", uuid, order.getOrderStatus()))
                 .map((uuid, order) -> {
                     try {
                         //create fake delay
@@ -98,14 +99,15 @@ public class OrderService implements OrderTopology {
     @Bean
     public Function<KStream<UUID, Order>, KStream<UUID, Order>> inventoryCheck() {
         return input -> input
+                .peek((uuid, order) -> log.debug("Checking order inventory, Order: {}", uuid))
                 .peek((key, value) -> value.setOrderStatus(OrderStatus.INVENTORY_CHECKING))
-                .peek((uuid, order) -> log.debug("Order {} is getting checked in the inventory", uuid))
                 .map(KeyValue::new);
     }
 
     @Bean
     public Function<KStream<UUID, Order>, KStream<UUID, Order>> shipping() {
         return input -> input
+                .peek((uuid, order) -> log.debug("Applying Shipping Process, Order: {}", uuid))
                 .peek((key, value) -> value.setOrderStatus(OrderStatus.SHIPPED))
                 .map(KeyValue::new);
     }
