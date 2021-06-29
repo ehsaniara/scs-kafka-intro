@@ -37,5 +37,4 @@ spring.cloud.stream:
         default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
         commit.interval.ms: 1000
         auto.offset.reset: latest
-server.port: 8080
 logging.level.com.ehsaniara.scs_kafka_intro: debug
