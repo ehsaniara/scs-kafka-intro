@@ -1,11 +1,11 @@
 spring:
   application.name: scs-100-2
-  cloud.function.definition: orderAggConsumer;orderProcess;inventoryCheck;shipping;shippedConsumer
+  cloud.function.definition: orderStateStoreProcessor;orderProcess;inventoryCheck;shipping;shippedConsumer
 
 spring.cloud.stream:
   bindings:
-    orderAggConsumer-in-0.destination: scs-100-2.orderStatus
-    orderAggConsumer-out-0.destination: scs-100-2.orderProcess
+    orderStateStoreProcessor-in-0.destination: scs-100-2.orderStatus
+    orderStateStoreProcessor-out-0.destination: scs-100-2.orderProcess
 
     orderProcess-in-0.destination: scs-100-2.orderProcess
     orderProcess-out-0.destination: scs-100-2.inventoryCheck
@@ -22,7 +22,7 @@ spring.cloud.stream:
 
   kafka.streams:
     bindings:
-      orderAggConsumer-in-0.consumer.configuration.application.id: ${spring.application.name}-orderAggConsumer
+      orderStateStoreProcessor-in-0.consumer.configuration.application.id: ${spring.application.name}-orderStateStoreProcessor
       orderProcess-in-0.consumer.configuration.application.id: ${spring.application.name}-orderProcess
       inventoryCheck-in-0.consumer.configuration.application.id: ${spring.application.name}-inventoryCheck
       shipping-in-0.consumer.configuration.application.id: ${spring.application.name}-shipping

@@ -30,7 +30,7 @@ public class OrderService implements OrderTopology {
 
     private final Serde<Order> orderJsonSerde;
 
-    @Value("${spring.cloud.stream.bindings.orderAggConsumer-in-0.destination}")
+    @Value("${spring.cloud.stream.bindings.orderStateStoreProcessor-in-0.destination}")
     private String orderTopic;
 
     @Value("${spring.cloud.stream.kafka.streams.binder.brokers}")
@@ -66,7 +66,7 @@ public class OrderService implements OrderTopology {
     }
 
     @Bean
-    public Function<KStream<UUID, Order>, KStream<UUID, Order>> orderAggConsumer() {
+    public Function<KStream<UUID, Order>, KStream<UUID, Order>> orderStateStoreProcessor() {
         return uuidOrderKStream -> {
             KTable<UUID, String> uuidStringKTable = kStreamKTableStringFunction.apply(uuidOrderKStream);
 
