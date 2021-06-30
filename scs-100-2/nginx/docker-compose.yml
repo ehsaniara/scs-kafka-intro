@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  scs-100-2-nginx:
+    image: nginx:latest
+    ports:
+      - "8080:8080"
+    container_name: scs-100-2-nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+

@@ -29,13 +29,17 @@ spring.cloud.stream:
       shippedConsumer-in-0.consumer.configuration.application.id: ${spring.application.name}-shipped
     binder:
       brokers: localhost:9092 # just to use it in the service app, Its already 'localhost:9092' by default
-      autoAddPartitions: true
-      minPartitionCount: 6
+      auto-add-partitions: true
+      min-partition-count: 6
+      state-store-retry:
+        max-attempts: 10
+        backoff-period: 500
       configuration:
         application.id: ${spring.application.name}
+        application.server: localhost:${server.port} # for InteractiveQueryService to describe itself
         state.dir: state-${spring.application.name}-${server.port} # to give a unique dir name in case you run multiple of this app on the same machine
         default.key.serde: org.apache.kafka.common.serialization.Serdes$UUIDSerde
         default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
-        commit.interval.ms: 100
+        commit.interval.ms: 1000
         auto.offset.reset: latest
 logging.level.com.ehsaniara.scs_kafka_intro: debug

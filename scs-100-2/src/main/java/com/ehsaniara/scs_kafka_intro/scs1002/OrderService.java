@@ -4,10 +4,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
+import org.apache.kafka.common.serialization.UUIDSerializer;
 import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.kstream.Joined;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.KTable;
+import org.apache.kafka.streams.state.HostInfo;
 import org.apache.kafka.streams.state.QueryableStoreTypes;
 import org.apache.kafka.streams.state.ReadOnlyKeyValueStore;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +17,7 @@ import org.springframework.cloud.stream.binder.kafka.streams.InteractiveQuerySer
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -40,9 +43,20 @@ public class OrderService implements OrderTopology {
         return orderUuid -> {
             final ReadOnlyKeyValueStore<UUID, String> store =
                     interactiveQueryService.getQueryableStore(Application.STATE_STORE_NAME, QueryableStoreTypes.keyValueStore());
+            HostInfo hostInfo = interactiveQueryService.getHostInfo(Application.STATE_STORE_NAME,
+                    orderUuid, new UUIDSerializer());
 
-            return OrderStatus.valueOf(Optional.ofNullable(store.get(orderUuid))
-                    .orElseThrow(() -> new OrderNotFoundException("Order not found")));
+            log.debug("key located in: {}", hostInfo);
+            if (interactiveQueryService.getCurrentHostInfo().equals(hostInfo)) {
+                //get it from current app store
+                return OrderStatus.valueOf(Optional.ofNullable(store.get(orderUuid))
+                        .orElseThrow(() -> new OrderNotFoundException("Order not found")));
+            } else {
+                //get it from remote app store
+                return new RestTemplate().getForEntity(
+                        String.format("%s://%s:%d/order/status/%s", "http", hostInfo.host(), hostInfo.port(), orderUuid)
+                        , OrderStatus.class).getBody();
+            }
         };
     }
 
