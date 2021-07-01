@@ -75,12 +75,6 @@ public class OrderService implements OrderTopology {
                 setDefaultTopic(orderTopic);
                 sendDefault(order.getOrderUuid(), order);
             }};
-            try {
-                //just a dummy delay
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             return order;
         };
     }
