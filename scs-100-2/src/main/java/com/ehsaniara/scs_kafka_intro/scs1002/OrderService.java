@@ -75,6 +75,12 @@ public class OrderService implements OrderTopology {
                 setDefaultTopic(orderTopic);
                 sendDefault(order.getOrderUuid(), order);
             }};
+            try {
+                //just a dummy delay
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             return order;
         };
     }
@@ -99,7 +105,7 @@ public class OrderService implements OrderTopology {
                 .peek((uuid, order) -> log.debug("Routing Order: {} [status: {}]", uuid, order.getOrderStatus()))
                 .map((uuid, order) -> {
                     try {
-                        //create fake delay
+                        //just a dummy delay
                         Thread.sleep(5_000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
