@@ -12,6 +12,11 @@ A simple example for an Event Driven Flow by the help of **SPRING CLOUD STREAM K
 * spring-cloud.version: `Hoxton.SR11` (To get Advantage of Binders `@Input`,`@Output`)
 * spring-boot.version: `2.4.5`
 
+### Documentation
+Please visit [Spring Cloud Stream Kafka (Part 1)](https://tanzu.vmware.com/developer/guides/event-streaming/spring-cloud-stream-kafka-p1/) for Project documentation
+
+
+
 The Docker-compose file contains: single kafka and zookeeper. just simply run the following command
 
 ```shell
@@ -81,3 +86,6 @@ java -Dspring.profiles.active=test2 -Dserver.port=8082 -jar scs-099-0.0.1-SNAPSH
 ```
 
 ![General Flow Diagram](material/kafka-events-intro-099-3.svg)
+
+
+Please visit [Spring Cloud Stream Kafka (Part 1)](https://tanzu.vmware.com/developer/guides/event-streaming/spring-cloud-stream-kafka-p1/) for Project documentation

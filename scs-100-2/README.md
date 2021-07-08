@@ -10,6 +10,10 @@ A simple Example of an Event Driven Flow by the help of **SPRING CLOUD STREAM KA
 * spring-cloud.version: `2020.0.3`
 * spring-boot.version: `2.5.2`
 
+### Documentation
+Please visit [Spring Cloud Stream Kafka (Part 3)](https://tanzu.vmware.com/developer/guides/event-streaming/spring-cloud-stream-kafka-p3/) for Project documentation
+
+
 ![General Flow Diagram](material/kafka-events-intro-1002-1.svg)
 
 The Docker-compose file contains: single kafka and zookeeper. just simply run the following command
@@ -102,3 +106,4 @@ ORDER_UUID=$(curl --silent -H 'Content-Type: application/json' -d "{\"itemName\"
 ![General Flow Diagram](material/kafka-events-intro-1002-4.svg)
 
 
+Please visit [Spring Cloud Stream Kafka (Part 3)](https://tanzu.vmware.com/developer/guides/event-streaming/spring-cloud-stream-kafka-p3/) for Project documentation
