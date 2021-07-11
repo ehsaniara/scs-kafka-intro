@@ -1,0 +1,19 @@
+spring.application.name: scs-101-order
+spring.cloud.stream:
+  bindings:
+    orderAggConsumer-in-0.destination: scs-101.orderStatus
+    orderAggConsumer-out-0.destination: scs-101.orderProcess
+  kafka.streams.binder:
+    autoAddPartitions: true
+    applicationId: ${spring.application.name}
+    configuration:
+      application.id: ${spring.application.name}
+      application.server: localhost:${server.port} # for InteractiveQueryService
+      state.dir: state-${spring.application.name}-${server.port} # to give a unique dir
+      default.key.serde: org.apache.kafka.common.serialization.Serdes$UUIDSerde
+      default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+      commit.interval.ms: 1000
+      auto.offset.reset: latest
+server.port: 8080
+logging.level.com.ehsaniara.scs_kafka_intro: debug
+

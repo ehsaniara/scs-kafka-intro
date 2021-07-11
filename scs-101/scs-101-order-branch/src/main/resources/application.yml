@@ -1,0 +1,9 @@
+spring.application.name: scs-101-order-branch
+spring.cloud.stream.bindings:
+  orderProcess-in-0.destination: scs-101.orderProcess
+  orderProcess-out-0.destination: scs-101.inventoryCheck
+  orderProcess-out-1.destination: scs-101.shipping
+  orderProcess-out-2.destination: scs-101.shipped
+server.port: 8081
+logging.level.com.ehsaniara.scs_kafka_intro: debug
+

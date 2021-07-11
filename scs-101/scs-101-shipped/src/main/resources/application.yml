@@ -1,0 +1,5 @@
+spring.application.name: scs-101-shipped
+spring.cloud.stream.bindings.shippedConsumer-in-0.destination: scs-101.shipped
+server.port: 8084
+logging.level.com.ehsaniara.scs_kafka_intro: debug
+

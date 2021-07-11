@@ -1,0 +1,8 @@
+spring.application.name: scs-101-shipping
+spring.cloud.stream.bindings:
+  shippingProcess-in-0.destination: scs-101.shipping
+  shippingProcess-out-0.destination: scs-101.orderStatus
+server.port: 8083
+logging.level.com.ehsaniara.scs_kafka_intro: debug
+
+
