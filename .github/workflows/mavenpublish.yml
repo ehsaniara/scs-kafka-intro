@@ -23,6 +23,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          cd scs-101/scs-101-inventory-check
           echo $GITHUB_TOKEN | docker login ghcr.io -u USERNAME --password-stdin
-          docker build -t scs-kafka-intro:scs-101-inventory-check-latest -f scs-101/scs-101-inventory-check/Dockerfile .
+          docker build -t scs-kafka-intro:scs-101-inventory-check-latest .
 #          docker push ghcr.io/ehsaniara/scs-kafka-intro:scs-101-inventory-check-latest
