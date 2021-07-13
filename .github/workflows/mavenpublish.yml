@@ -19,7 +19,7 @@ jobs:
         run: |
           mvn -f scs-101/scs-101-commons deploy
 
-      - name: Login to Registry
+      - name: Docker Build and Push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
