@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: scs-101-shipping-service
+  labels:
+    app: scs-101-shipping
+    version: 0.0.1-SNAPSHOT
+spec:
+  ports:
+    - port: 8080
+      protocol: "TCP"
+      name: http
+      targetPort: http
+  selector:
+    app: scs-101-shipping
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scs-101-shipping
+  labels:
+    app: scs-101-shipping
+    version: 0.0.1-SNAPSHOT
+spec:
+  selector:
+    matchLabels:
+      app: scs-101-shipping
+      version: 0.0.1-SNAPSHOT
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: scs-101-shipping
+        version: 0.0.1-SNAPSHOT
+    spec:
+      containers:
+        - name: scs-101-shipping
+          image: ghcr.io/ehsaniara/scs-kafka-intro:scs-101-shipping
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: kube
+            - name: MY_POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
