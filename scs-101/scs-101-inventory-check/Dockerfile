@@ -7,13 +7,13 @@ RUN echo "<settings><servers><server><id>github</id><username>OWNER</username><p
 RUN mvn clean package -s settings.xml -e
 
 # extract spring boot the layers
-FROM openjdk11:jre-slim as jar_builder
+FROM openjdk:11-jdk-slim as jar_builder
 WORKDIR /application
 COPY --from=maven_builder /application/target/*.jar application.jar
 RUN java -Djarmode=layertools -jar application.jar extract
 
 # copy the extracted layers
-FROM openjdk11:jre-slim
+FROM openjdk:11-jdk-slim
 WORKDIR /application
 COPY --from=jar_builder application/dependencies/ ./
 COPY --from=jar_builder application/spring-boot-loader/ ./
