@@ -9,7 +9,7 @@ RUN \
     echo "Argument not provided" ; \
     else\
     echo "<settings><servers><server><id>github</id><username>OWNER</username><password>${GITHUB_TOKEN}</password></server></servers></settings>" > settings.xml ; \
-    && sed -i 's|</project>|<repositories><repository><id>github</id><name>GitHub</name><url>https://maven.pkg.github.com/ehsaniara/scs-kafka-intro</url></repository></repositories></project>|g' pom.xml ; \
+    sed -i 's|</project>|<repositories><repository><id>github</id><name>GitHub</name><url>https://maven.pkg.github.com/ehsaniara/scs-kafka-intro</url></repository></repositories></project>|g' pom.xml ; \
     fi
 RUN if [ "x$GITHUB_TOKEN" = "x" ] ; then mvn clean package ; else  mvn clean package -s settings.xml ; fi
 
