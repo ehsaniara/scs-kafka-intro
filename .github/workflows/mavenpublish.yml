@@ -18,3 +18,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mvn -f scs-101/scs-101-commons deploy
+
+      - name: Login to Registry
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo $GITHUB_TOKEN | docker login ghcr.io -u USERNAME --password-stdin
+          docker build scs-kafka-intro:scs-101-inventory-check-latest -f scs-101/scs-101-inventory-check/Dockerfile .
+#          docker push ghcr.io/ehsaniara/scs-kafka-intro:scs-101-inventory-check-latest
