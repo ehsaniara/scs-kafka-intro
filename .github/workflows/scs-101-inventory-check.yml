@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - scs-101/scs-101-inventory-check/**
+      - 'scs-101/scs-101-inventory-check/**'
 
 jobs:
   build:

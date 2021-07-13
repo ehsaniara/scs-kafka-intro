@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - scs-101/scs-101-commons/**
+      - 'scs-101/scs-101-commons/**'
 
 jobs:
   build:
