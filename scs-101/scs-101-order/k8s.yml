@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
         - name: scs-101-order
-          image: ghcr.io/ehsaniara/scs-kafka-intro:scs-101-order-latest
+          image: ghcr.io/ehsaniara/scs-kafka-intro:scs-101-order
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

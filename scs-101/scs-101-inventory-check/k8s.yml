@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
         - name: scs-101-inventory-check
-          image: ghcr.io/ehsaniara/scs-kafka-intro:scs-101-inventory-check-latest
+          image: ghcr.io/ehsaniara/scs-kafka-intro:scs-101-inventory-check
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
