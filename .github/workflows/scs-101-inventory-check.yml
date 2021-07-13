@@ -1,0 +1,29 @@
+name: Java CI
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - scs-101/scs-101-inventory-check/**
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Docker Build and Push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd scs-101/scs-101-inventory-check
+          echo $GITHUB_TOKEN | docker login ghcr.io -u USERNAME --password-stdin
+          docker build --build-arg GITHUB_TOKEN=$GITHUB_TOKEN -t ghcr.io/ehsaniara/scs-kafka-intro:scs-101-inventory-check-latest .
+          docker push ghcr.io/ehsaniara/scs-kafka-intro:scs-101-inventory-check-latest
