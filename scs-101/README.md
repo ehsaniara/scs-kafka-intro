@@ -1,10 +1,10 @@
 
-###This Project has 5 subprojects:
+### This Project has 5 subprojects:
 
 ## scs-101-commons
 [![scs-101 commons ci](https://github.com/ehsaniara/scs-kafka-intro/actions/workflows/scs101commons.yml/badge.svg?branch=main)](https://github.com/ehsaniara/scs-kafka-intro/actions/workflows/scs101commons.yml)
 
-lib commons file for core projects
+lib project for core projects
 
 ## 1- scs-101-inventory-check
 
