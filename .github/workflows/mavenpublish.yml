@@ -2,6 +2,8 @@ name: Java CI
 
 on:
   push:
+    paths:
+      - 'scs-101/**'
     branches:
       - main
   pull_request:
