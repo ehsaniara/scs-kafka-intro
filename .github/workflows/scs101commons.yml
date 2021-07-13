@@ -2,10 +2,13 @@ name: scs-101 commons CI
 
 on:
   push:
-    branches:
-      - master
     paths:
       - 'scs-101/scs-101-commons/**'
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:

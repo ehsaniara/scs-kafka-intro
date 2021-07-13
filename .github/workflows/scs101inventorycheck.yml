@@ -2,8 +2,13 @@ name: Java CI
 
 on:
   push:
+    paths:
+      - 'scs-101/scs-101-inventory-check/**'
     branches:
-      - master
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
