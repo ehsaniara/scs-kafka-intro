@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'scs-101/scs-101-inventory-check/**'
 
 jobs:
   build:
