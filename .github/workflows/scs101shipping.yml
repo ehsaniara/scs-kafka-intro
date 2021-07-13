@@ -1,4 +1,4 @@
-name: scs-101 shipped ci
+name: scs-101 shipping ci
 
 on:
   push:
