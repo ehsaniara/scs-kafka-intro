@@ -1,7 +1,9 @@
 FROM maven:3.6.3-jdk-11-slim AS maven_builder
+ARG GITHUB_TOKEN
 COPY pom.xml /application/
 COPY src /application/src/
 WORKDIR /application/
+RUN echo "<settings><servers><server><id>github</id><username>OWNER</username><password>${GITHUB_TOKEN}</password></server></servers></settings>" > settings.xml
 RUN mvn clean package -e
 
 # extract spring boot the layers
