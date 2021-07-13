@@ -1,8 +1,8 @@
 #Jay Ehsaniara, Dockerfile should be in project root where pom.xml locates
 FROM maven:3.6.3-jdk-11-slim AS maven_builder
 ARG GITHUB_TOKEN
-COPY pom.xml /application/
-COPY src /application/src/
+COPY scs-101-inventory-check/pom.xml /application/
+COPY scs-101-inventory-check/src /application/src/
 WORKDIR /application/
 RUN \
     if [ "x$GITHUB_TOKEN" = "x" ] ; then \
