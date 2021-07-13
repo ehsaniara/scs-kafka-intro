@@ -16,4 +16,7 @@ spring.cloud.stream:
       auto.offset.reset: latest
 server.port: 8080
 logging.level.com.ehsaniara.scs_kafka_intro: debug
-
+---
+spring:
+  config.activate.on-profile: kube
+  cloud.stream.kafka.streams.binder.brokers: my-cluster-kafka-bootstrap.kafka:9092
