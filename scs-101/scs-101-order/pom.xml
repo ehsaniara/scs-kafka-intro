@@ -65,6 +65,14 @@
         </dependencies>
     </dependencyManagement>
 
+    <repositories>
+        <repository>
+            <id>github</id>
+            <name>GitHub ehsaniara Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/ehsaniara/scs-kafka-intro</url>
+        </repository>
+    </repositories>
+
     <build>
         <plugins>
             <plugin>
