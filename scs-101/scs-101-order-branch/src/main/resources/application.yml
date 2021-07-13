@@ -6,4 +6,7 @@ spring.cloud.stream.bindings:
   orderProcess-out-2.destination: scs-101.shipped
 server.port: 8081
 logging.level.com.ehsaniara.scs_kafka_intro: debug
-
+---
+spring:
+  config.activate.on-profile: kube
+  cloud.stream.kafka.streams.binder.brokers: my-cluster-kafka-bootstrap.kafka:9092
