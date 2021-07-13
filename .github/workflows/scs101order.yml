@@ -1,4 +1,4 @@
-name: scs-101 inventory-check ci
+name: scs-101 order ci
 
 on:
   push:
