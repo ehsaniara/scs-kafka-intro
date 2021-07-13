@@ -4,7 +4,7 @@ COPY pom.xml /application/
 COPY src /application/src/
 WORKDIR /application/
 RUN echo "<settings><servers><server><id>github</id><username>OWNER</username><password>${GITHUB_TOKEN}</password></server></servers></settings>" > settings.xml
-RUN mvn clean package -s settings.xml -e
+RUN mvn clean package -s settings.xml
 
 # extract spring boot the layers
 FROM openjdk:11-jdk-slim as jar_builder
