@@ -32,3 +32,30 @@ lib project for core projects
 ```shell
 ORDER_UUID=$(curl --silent -H 'Content-Type: application/json' -d "{\"itemName\":\"book\"}" http://localhost:8080/order | jq -r '.orderUuid') && for i in `seq 1 15`; do sleep 1; echo $(curl --silent "http://localhost:8080/order/status/"$ORDER_UUID); done;
 ```
+
+
+## Docker Images
+
+I tagged the docker image based on project name since they are all in the same GitHub project, (but in real life this should be in separated project and tagged by application version)
+
+### scs-101-shipping
+```shell
+docker pull ghcr.io/ehsaniara/scs-kafka-intro:scs-101-shipping
+```
+### scs-101-order
+```shell
+docker pull ghcr.io/ehsaniara/scs-kafka-intro:scs-101-order
+```
+### scs-101-order-branch
+```shell
+docker pull ghcr.io/ehsaniara/scs-kafka-intro:scs-101-order-branch
+```
+### scs-101-shipped
+```shell
+docker pull ghcr.io/ehsaniara/scs-kafka-intro:scs-101-shipped
+```
+### scs-101-shipping
+```shell
+docker pull ghcr.io/ehsaniara/scs-kafka-intro:scs-101-shipping
+```
+
