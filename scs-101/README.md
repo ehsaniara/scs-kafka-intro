@@ -36,7 +36,7 @@ ORDER_UUID=$(curl --silent -H 'Content-Type: application/json' -d "{\"itemName\"
 
 ## Docker Images
 
-I tagged the docker image based on project name since they are all in the same GitHub project, (but in real life this should be in separated project and tagged by application version)
+I tagged the docker image based on project name, since they are all in the same GitHub project, (but in real life this should be in separated project and tagged by application version)
 
 ### scs-101-shipping
 ```shell

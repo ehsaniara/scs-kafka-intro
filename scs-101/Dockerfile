@@ -12,6 +12,7 @@ RUN \
     sed -i 's|</project>|<repositories><repository><id>github</id><name>GitHub</name><url>https://maven.pkg.github.com/ehsaniara/scs-kafka-intro</url></repository></repositories></project>|g' pom.xml ; \
     fi
 RUN if [ "x$GITHUB_TOKEN" = "x" ] ; then mvn clean package ; else  mvn clean package -s settings.xml ; fi
+RUN if [ "x$GITHUB_TOKEN" = "x" ] ; then echo "Argument not provided" ; else  rm settings.xml ; fi
 
 # extract spring boot the layers
 FROM openjdk:11-jdk-slim as jar_builder
