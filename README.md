@@ -24,4 +24,8 @@ Please visit the following links for project documentations.
 
 [Project Source Code](./scs-100-2)
 
+### Spring Cloud Stream Kafka (Part4) Kubernetes & Microservices 
+
+[Project Source Code](./scs-101)
+
 
