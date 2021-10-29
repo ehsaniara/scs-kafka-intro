@@ -22,7 +22,7 @@ The Docker-compose file contains: single kafka and zookeeper. just simply run th
 docker-compose up -d
 ```
 
-_Note: I assume you already have docker setup in your machine._
+> I assume you already have docker setup in your machine.
 
 ### Make the project
 
