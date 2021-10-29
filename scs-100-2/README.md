@@ -48,9 +48,9 @@ adding `-Dserver.port=8081` (basically a different port) as:
 java -Dserver.port=8081 -jar scs-100-0.0.1-SNAPSHOT.jar
 ```
 
-_Note: "When running multiple instances of the same application on a single machine, this path must be unique for each
-such instance._
-At this point you should have already seen the information about your topics"
+> When you running multiple instances of the same application on a single machine, this path must be unique for each
+such instance.
+At this point you should have already seen the information about your topics
 , [to read more](https://kafka.apache.org/28/documentation/streams/developer-guide/config-streams.html#state-dir)
 
 ### Check Application
