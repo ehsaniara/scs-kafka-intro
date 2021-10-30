@@ -46,7 +46,7 @@ to pass the following parameter before `-jar` by adding `-Dserver.port=8081` as:
 java -Dserver.port=8081 -jar scs-100-0.0.1-SNAPSHOT.jar
 ```
 
-_Note: you can also modify the application.yml and set the same properties based on your app profile_
+> you can also modify the application.yml and set the same properties based on your app profile
 
 At this point you should have already seen the information about your topics.
 
