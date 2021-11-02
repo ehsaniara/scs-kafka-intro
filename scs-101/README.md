@@ -1,5 +1,5 @@
 
-### This Project has 5 subprojects:
+### This Project has 5 subprojects (stateless):
 
 ## scs-101-commons
 [![scs-101 commons ci](https://github.com/ehsaniara/scs-kafka-intro/actions/workflows/scs101commons.yml/badge.svg?branch=main)](https://github.com/ehsaniara/scs-kafka-intro/actions/workflows/scs101commons.yml)
