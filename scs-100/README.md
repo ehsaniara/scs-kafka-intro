@@ -59,6 +59,6 @@ you should now be able to place your order by calling the following `curl` comma
 # assuming your app is listening on 8080
 ORDER_UUID=$(curl --silent -H 'Content-Type: application/json' -d "{\"itemName\":\"book\"}" http://localhost:8080/order | jq -r '.orderUuid') && for i in `seq 1 15`; do echo $(curl --silent "http://localhost:8080/order/status/"$ORDER_UUID); sleep 1; done;
 ```
-Note: make sure you have already installed the `jq` 
+> make sure you have already installed the `jq` 
 
 Please visit [Spring Cloud Stream Kafka (Part 2)](https://tanzu.vmware.com/developer/guides/event-streaming/spring-cloud-stream-kafka-p2/) for Project documentation 
