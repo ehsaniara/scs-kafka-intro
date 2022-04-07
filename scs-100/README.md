@@ -61,4 +61,5 @@ ORDER_UUID=$(curl --silent -H 'Content-Type: application/json' -d "{\"itemName\"
 ```
 > make sure you have already installed the `jq` 
 
-> Please visit [Spring Cloud Stream Kafka (Part 2)](https://tanzu.vmware.com/developer/guides/event-streaming/spring-cloud-stream-kafka-p2/) for Project documentation 
+### Next 
+Please visit [Spring Cloud Stream Kafka (Part 2)](https://tanzu.vmware.com/developer/guides/event-streaming/spring-cloud-stream-kafka-p2/) for Project documentation 
