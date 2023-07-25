@@ -23,8 +23,6 @@ public class Application {
     @Bean
     public Function<KStream<UUID, Order>, KStream<UUID, Order>> inventoryCheck() {
         return input -> input
-                .peek((key, value) -> value.setOrderStatus(OrderStatus.INVENTORY_CHECKING))
-                .peek((uuid, order) -> log.debug("Order {} is getting checked in the inventory", uuid))
-                .map(KeyValue::new);
+                .map((key, value) -> new KeyValue<>(key, new Order(value.orderUuid(), value.itemName(), OrderStatus.INVENTORY_CHECKING)));
     }
 }

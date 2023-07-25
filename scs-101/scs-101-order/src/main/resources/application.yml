@@ -1,9 +1,12 @@
 spring.application.name: scs-101-order
 spring.cloud.stream:
   bindings:
-    orderAggConsumer-in-0.destination: scs-101.orderStatus
-    orderAggConsumer-out-0.destination: scs-101.orderProcess
+    orderAggConsumer-in-0:
+      destination: scs-101.orderStatus
+    orderAggConsumer-out-0:
+      destination: scs-101.orderProcess
   kafka.streams.binder:
+    brokers: localhost:9092
     autoAddPartitions: true
     applicationId: ${spring.application.name}
     configuration:
@@ -15,7 +18,8 @@ spring.cloud.stream:
       commit.interval.ms: 1000
       auto.offset.reset: latest
 server.port: 8080
-logging.level.com.ehsaniara.scs_kafka_intro: debug
+logging.level:
+  com.ehsaniara.scs_kafka_intro: debug
 ---
 spring:
   config.activate.on-profile: kube

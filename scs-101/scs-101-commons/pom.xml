@@ -6,32 +6,21 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.2</version>
+        <version>3.1.0</version>
     </parent>
 
     <groupId>com.ehsaniara.scs_kafka_intro</groupId>
     <artifactId>scs-101-commons</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>scs-101-commons</name>
     <packaging>jar</packaging>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <spring-boot.version>${project.parent.version}</spring-boot.version>
     </properties>
 
     <dependencies>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>

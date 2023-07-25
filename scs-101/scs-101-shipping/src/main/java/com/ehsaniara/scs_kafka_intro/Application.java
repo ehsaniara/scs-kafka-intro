@@ -21,7 +21,6 @@ public class Application {
     @Bean
     public Function<KStream<UUID, Order>, KStream<UUID, Order>> shippingProcess() {
         return input -> input
-                .peek((key, value) -> value.setOrderStatus(OrderStatus.SHIPPED))
-                .map(KeyValue::new);
+                .map((key, value) -> new KeyValue<>(key, new Order(value.orderUuid(), value.itemName(), OrderStatus.SHIPPED)));
     }
 }

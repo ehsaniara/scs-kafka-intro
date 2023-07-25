@@ -34,11 +34,11 @@ public interface OrderTopology {
             ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, serde.serializer().getClass()));
 
     Function<KStream<UUID, Order>, KTable<UUID, String>> kStreamKTableStringFunction = input -> input
-            .groupBy((s, order) -> order.getOrderUuid(),
+            .groupBy((s, order) -> order.orderUuid(),
                     Grouped.with(null, new JsonSerde<>(Order.class, new ObjectMapper())))
             .aggregate(
                     String::new,
-                    (s, order, oldStatus) -> order.getOrderStatus().toString(),
+                    (s, order, oldStatus) -> order.orderStatus().toString(),
                     Materialized.<UUID, String, KeyValueStore<Bytes, byte[]>>as(Application.STATE_STORE_NAME)
                             .withKeySerde(Serdes.UUID()).
                             withValueSerde(Serdes.String())

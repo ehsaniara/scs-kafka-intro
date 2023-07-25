@@ -2,10 +2,10 @@ package com.ehsaniara.scs_kafka_intro;
 
 import com.ehsaniara.scs_kafka_intro.module.Order;
 import com.ehsaniara.scs_kafka_intro.module.OrderStatus;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @RestController

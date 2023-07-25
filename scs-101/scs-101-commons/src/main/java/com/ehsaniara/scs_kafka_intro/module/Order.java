@@ -1,21 +1,7 @@
 package com.ehsaniara.scs_kafka_intro.module;
 
-import lombok.*;
-
-import java.io.Serializable;
 import java.util.UUID;
 
-@ToString
-@Builder
-@Setter
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
-public class Order implements Serializable {
+public record Order(UUID orderUuid, String itemName, OrderStatus orderStatus) {
 
-    private UUID orderUuid;
-
-    private String itemName;
-
-    private OrderStatus orderStatus;
 }

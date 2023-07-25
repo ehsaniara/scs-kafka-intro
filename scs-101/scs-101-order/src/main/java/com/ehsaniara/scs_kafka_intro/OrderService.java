@@ -4,6 +4,7 @@ import com.ehsaniara.scs_kafka_intro.module.Order;
 import com.ehsaniara.scs_kafka_intro.module.OrderNotFoundException;
 import com.ehsaniara.scs_kafka_intro.module.OrderStatus;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.common.serialization.UUIDSerializer;
@@ -26,6 +27,7 @@ import java.util.function.Function;
 
 import static com.ehsaniara.scs_kafka_intro.module.OrderStatus.PENDING;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class OrderService implements OrderTopology {
@@ -66,16 +68,13 @@ public class OrderService implements OrderTopology {
     public Function<Order, Order> placeOrder() {
         return orderIn -> {
             //create an order
-            var order = Order.builder()//
-                    .itemName(orderIn.getItemName())//
-                    .orderUuid(UUID.randomUUID())//
-                    .orderStatus(PENDING)//
-                    .build();
+            var order = new Order(UUID.randomUUID(), orderIn.itemName(), PENDING);
 
+            log.info("Create order: {}", order);
             //producer
             new KafkaTemplate<>(orderJsonSerdeFactoryFunction.apply(orderJsonSerde, bootstrapServer), true) {{
                 setDefaultTopic(orderTopic);
-                sendDefault(order.getOrderUuid(), order);
+                sendDefault(order.orderUuid(), order);
             }};
 
             return order;

@@ -1,9 +1,12 @@
 spring.application.name: scs-101-inventory-check
 spring.cloud.stream.bindings:
-  inventoryCheck-in-0.destination: scs-101.inventoryCheck
-  inventoryCheck-out-0.destination: scs-101.orderStatus
+  inventoryCheck-in-0:
+    destination: scs-101.inventoryCheck
+  inventoryCheck-out-0:
+    destination: scs-101.orderStatus
 server.port: 8082
-logging.level.com.ehsaniara.scs_kafka_intro: debug
+logging.level:
+  com.ehsaniara.scs_kafka_intro: debug
 ---
 spring:
   config.activate.on-profile: kube

@@ -21,6 +21,6 @@ public class Application {
     @Bean
     public Consumer<KStream<UUID, Order>> shippedConsumer() {
         return input -> input
-                .foreach((key, value) -> log.debug("THIS IS THE END! key: {} value: {}", key, value));
+                .foreach((key, value) -> log.debug("ORDER IS AT ITS DESTINATION ADDRESS! key: {} value: {}", key, value));
     }
 }

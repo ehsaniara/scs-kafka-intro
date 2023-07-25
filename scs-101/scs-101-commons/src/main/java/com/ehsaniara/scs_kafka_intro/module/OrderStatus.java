@@ -1,8 +1,5 @@
 package com.ehsaniara.scs_kafka_intro.module;
 
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor
 public enum OrderStatus {
     PENDING("PENDING"),
     INVENTORY_CHECKING("INVENTORY_CHECKING"),
@@ -11,6 +8,10 @@ public enum OrderStatus {
     CANCELED("CANCELED");
 
     private final String name;
+
+    OrderStatus(String name) {
+        this.name = name;
+    }
 
     public String toString() {
         return this.name;
