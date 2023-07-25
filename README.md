@@ -28,9 +28,9 @@ Key features:
 Order Example 
 
 Key features:
-- spring boot (2.5.2)
-- Spring cloud Stream kafka (2020.0.3)
-- StageManger 
+- spring boot (3.1.0)
+- Spring cloud Stream kafka (2022.0.3)
+- State Stor 
 - Functional interface
 
 [Documentation (Part 3) Functional Programming](https://tanzu.vmware.com/developer/guides/event-streaming/spring-cloud-stream-kafka-p3/)
