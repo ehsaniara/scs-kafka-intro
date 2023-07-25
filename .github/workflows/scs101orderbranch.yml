@@ -29,3 +29,4 @@ jobs:
           echo $GITHUB_TOKEN | docker login ghcr.io -u USERNAME --password-stdin
           docker build --build-arg GITHUB_TOKEN=$GITHUB_TOKEN -t ghcr.io/ehsaniara/scs-kafka-intro:scs-101-order-branch .
           docker push ghcr.io/ehsaniara/scs-kafka-intro:scs-101-order-branch
+
