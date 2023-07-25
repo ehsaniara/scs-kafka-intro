@@ -21,7 +21,7 @@ COPY --from=maven_builder /application/target/*.jar application.jar
 RUN java -Djarmode=layertools -jar application.jar extract
 
 # copy the extracted layers
-FROM openjdk:11-jdk-slim
+FROM openjdk:17-jdk-slim
 WORKDIR /application
 COPY --from=jar_builder application/dependencies/ ./
 COPY --from=jar_builder application/spring-boot-loader/ ./
