@@ -1,5 +1,5 @@
 #Jay Ehsaniara, Dockerfile has to be in project root where pom.xml located
-FROM maven:3.9.3-jdk-17-slim AS maven_builder
+FROM maven:3.8.4-amazoncorretto:17 AS maven_builder
 ARG GITHUB_TOKEN
 COPY /pom.xml /application/
 COPY /src /application/src/
