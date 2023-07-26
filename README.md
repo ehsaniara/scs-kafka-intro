@@ -30,7 +30,7 @@ Order Example
 Key features:
 - spring boot (3.1.0)
 - Spring cloud Stream kafka (2022.0.3)
-- State Stor 
+- State Store
 - Functional interface
 
 [Documentation (Part 3) Functional Programming](https://tanzu.vmware.com/developer/guides/event-streaming/spring-cloud-stream-kafka-p3/)
