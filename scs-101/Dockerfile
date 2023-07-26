@@ -1,5 +1,5 @@
 #Jay Ehsaniara, Dockerfile has to be in project root where pom.xml located
-FROM maven:3.6.3-jdk-11-slim AS maven_builder
+FROM maven:3.9.3-jdk-17-slim AS maven_builder
 ARG GITHUB_TOKEN
 COPY /pom.xml /application/
 COPY /src /application/src/
@@ -15,7 +15,7 @@ RUN if [ "x$GITHUB_TOKEN" = "x" ] ; then mvn clean package ; else  mvn clean pac
 RUN if [ "x$GITHUB_TOKEN" = "x" ] ; then echo "Arg not provided" ; else  rm settings.xml ; fi
 
 # extract spring boot the layers
-FROM openjdk:11-jdk-slim as jar_builder
+FROM openjdk:17-jdk-slim as jar_builder
 WORKDIR /application
 COPY --from=maven_builder /application/target/*.jar application.jar
 RUN java -Djarmode=layertools -jar application.jar extract
